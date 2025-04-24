@@ -1,53 +1,54 @@
 {
-    "name": "@eidolon/player-sdk",
-    "version": "0.1.0",
-    "main": "./dist/PlayerAPI.umd.cjs",
-    "module": "./dist/PlayerAPI.js",
-    "devDependencies": {
-        "husky": "^9.1.7",
-        "lint-staged": "^15.5.1",
-        "prettier": "3.5.3",
-        "typescript": "~5.7.3",
-        "vite": "^6.1.1"
-    },
-    "exports": {
-        "types": "./index.d.ts",
-        "import": "./dist/PlayerAPI.js",
-        "require": "./dist/PlayerAPI.umd.cjs"
-    },
-    "files": [
-        "dist"
-    ],
-    "author": {
-        "email": "sawyer@dirtroad.dev",
-        "name": "Sawyer Cutler",
-        "url": "https://github.com/TheGreatAxios"
-    },
-    "scripts": {
-        "dev": "vite",
-        "build": "tsc && vite build",
-        "prepare": "husky"
-    },
-    "lint-staged": {
-        "**/*": "prettier --write --ignore-unknown"
-    },
-    "type": "module",
+  "name": "@eidolon-labs/player-sdk",
+  "version": "0.1.0",
+  "main": "./dist/PlayerAPI.umd.cjs",
+  "module": "./dist/PlayerAPI.js",
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.1",
+    "prettier": "3.5.3",
+    "typescript": "~5.7.3",
+    "vite": "^6.1.1"
+  },
+  "exports": {
     "types": "./index.d.ts",
-    "description": "@eidolon/player-sdk is a lightweight API wrapper for the Eidolon Player API; the invisible gaming layer for blockchain.",
-    "keywords": [
-        "blockchain",
-        "gaming",
-        "web3",
-        "gamers",
-        "skale",
-        "invisible",
-        "web3gaming",
-        "eidolon",
-        "api"
-    ],
-    "homepage": "https://github.com/Eidolon-Labs/player-sdk-ts",
-    "bugs": {
-        "url": "https://github.com/Eidolon-Labs/player-sdk-ts/issues",
-        "email": "code@dirtroad.dev"
-    }
+    "import": "./dist/PlayerAPI.js",
+    "require": "./dist/PlayerAPI.umd.cjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "author": {
+    "email": "sawyer@dirtroad.dev",
+    "name": "Sawyer Cutler",
+    "url": "https://github.com/TheGreatAxios"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "prepare": "bunx husky"
+  },
+  "private": false,
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "type": "module",
+  "types": "./index.d.ts",
+  "description": "@eidolon/player-sdk is a lightweight API wrapper for the Eidolon Player API; the invisible gaming layer for blockchain.",
+  "keywords": [
+    "blockchain",
+    "gaming",
+    "web3",
+    "gamers",
+    "skale",
+    "invisible",
+    "web3gaming",
+    "eidolon",
+    "api"
+  ],
+  "homepage": "https://github.com/Eidolon-Labs/player-sdk-ts",
+  "bugs": {
+    "url": "https://github.com/Eidolon-Labs/player-sdk-ts/issues",
+    "email": "code@dirtroad.dev"
+  }
 }
