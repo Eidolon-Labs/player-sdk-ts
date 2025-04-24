@@ -1,0 +1,33 @@
+{
+  "name": "-eidolon-player-api",
+  "version": "0.0.0",
+  "main": "./dist/counter.umd.cjs",
+  "module": "./dist/counter.js",
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.1",
+    "prettier": "3.5.3",
+    "typescript": "~5.7.3",
+    "vite": "^6.1.1"
+  },
+  "exports": {
+    "types": "./index.d.ts",
+    "import": "./dist/counter.js",
+    "require": "./dist/counter.umd.cjs"
+  },
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "type": "module",
+  "types": "./index.d.ts"
+}

@@ -1,0 +1,6 @@
+# Ignore artifacts:
+build
+coverage
+.env
+bun.lock
+node_modules
