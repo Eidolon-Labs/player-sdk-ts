@@ -16,8 +16,7 @@
         "require": "./dist/PlayerAPI.umd.cjs"
     },
     "files": [
-        "dist",
-        "index.d.ts"
+        "dist"
     ],
     "author": {
         "email": "sawyer@dirtroad.dev",
