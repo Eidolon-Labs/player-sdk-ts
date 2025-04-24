@@ -19,7 +19,11 @@
         "dist",
         "index.d.ts"
     ],
-    "private": true,
+    "author": {
+        "email": "sawyer@dirtroad.dev",
+        "name": "Sawyer Cutler",
+        "url": "https://github.com/TheGreatAxios"
+    },
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
@@ -29,5 +33,22 @@
         "**/*": "prettier --write --ignore-unknown"
     },
     "type": "module",
-    "types": "./index.d.ts"
+    "types": "./index.d.ts",
+    "description": "@eidolon/player-sdk is a lightweight API wrapper for the Eidolon Player API; the invisible gaming layer for blockchain.",
+    "keywords": [
+        "blockchain",
+        "gaming",
+        "web3",
+        "gamers",
+        "skale",
+        "invisible",
+        "web3gaming",
+        "eidolon",
+        "api"
+    ],
+    "homepage": "https://github.com/Eidolon-Labs/player-sdk-ts",
+    "bugs": {
+        "url": "https://github.com/Eidolon-Labs/player-sdk-ts/issues",
+        "email": "code@dirtroad.dev"
+    }
 }
