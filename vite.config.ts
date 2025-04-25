@@ -4,8 +4,9 @@ export default defineConfig({
     build: {
         lib: {
             entry: "./lib/main.ts",
+            formats: ["es", "cjs"],
             name: "PlayerAPI",
-            fileName: "PlayerAPI",
+            fileName: "player-api",
         },
     }
 });

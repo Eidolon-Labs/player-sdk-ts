@@ -2,7 +2,6 @@ import { SupportedRegions } from "./regions";
 import { type SupportedChains, type CreatePlayerResponse, type ApiError, type SendTransactionResponse, type EstimateGasResponse, type GetPlayerResponse } from "./types";
 import { urls } from "./urls";
 
-
 class PlayerApi {
     #apiKey: string;
     #url: string;
@@ -46,7 +45,7 @@ class PlayerApi {
                 }),
             });
     
-            return await response.json() satisfies CreatePlayerResponse;
+            return await response.json() as CreatePlayerResponse;
         } catch (err: any) {
             console.log(err);
             return {
@@ -83,7 +82,7 @@ class PlayerApi {
                 }),
             });
     
-            return await response.json() satisfies SendTransactionResponse;
+            return await response.json() as SendTransactionResponse;
         } catch (err: any) {
             return {
                 error: err["error"] ?? err["message"] ?? err.toString()
@@ -119,7 +118,7 @@ class PlayerApi {
                 }),
             });
     
-            return await response.json() satisfies EstimateGasResponse;
+            return await response.json() as EstimateGasResponse;
         } catch (err: any) {
             return {
                 error: err["message"] ?? err.toString()
@@ -135,7 +134,7 @@ class PlayerApi {
                     "x-api-key": this.#apiKey,
                 },
             });
-            return await response.json() satisfies GetPlayerResponse;
+            return await response.json() as GetPlayerResponse;
         } catch (err: any) {
             return {
                 error: err["error"] ?? err["message"] ?? err.toString()
@@ -145,3 +144,7 @@ class PlayerApi {
 }
 
 export { PlayerApi };
+
+export * from "./regions";
+export * from "./types";
+export * from "./urls";

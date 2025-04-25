@@ -1,8 +1,6 @@
 {
   "name": "@eidolon-labs/player-sdk",
   "version": "0.2.0",
-  "main": "./dist/PlayerAPI.umd.cjs",
-  "module": "./dist/PlayerAPI.js",
   "devDependencies": {
     "husky": "^9.1.7",
     "lint-staged": "^15.5.1",
@@ -11,14 +9,17 @@
     "vite": "^6.1.1",
     "@types/bun": "latest"
   },
+  "main": "dist/player-api.cjs",
+  "module": "dist/player-api.js",
+  "types": "dist/types/main.d.ts",
   "exports": {
-    "types": "./index.d.ts",
-    "import": "./dist/PlayerAPI.js",
-    "require": "./dist/PlayerAPI.umd.cjs"
+    ".": {
+      "types": "./dist/types/main.d.ts",
+      "import": "./dist/player-api.js",
+      "require": "./dist/player-api.cjs"
+    }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "author": {
     "email": "sawyer@dirtroad.dev",
     "name": "Sawyer Cutler",
@@ -26,7 +27,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build && tsc -p tsconfig.build.json",
     "prepare": "bunx husky"
   },
   "private": false,
@@ -34,7 +35,6 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "type": "module",
-  "types": "./index.d.ts",
   "description": "@eidolon/player-sdk is a lightweight API wrapper for the Eidolon Player API; the invisible gaming layer for blockchain.",
   "keywords": [
     "blockchain",
