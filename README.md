@@ -46,6 +46,23 @@ const player = await api.createPlayer({
     chainName: "nebula-testnet", // or nebula-mainnet
     suppliedId: "xxxx-xxxx-xxxx" // some id of yours in case you lose the Eidolon Id
 });
+
+console.log(player);
+/*
+{
+    note: string;
+    message: string;
+    data: {
+        accountId: string;
+        player: {
+            id: string;
+            addresses: {
+                evm: `0x${string}`;
+            }
+        }
+    }
+}
+*/
 ```
 
 ### Send Transaction
@@ -59,6 +76,16 @@ const tx = await playerApi.sendTransaction({
     data: "0x...",                  // encoded function data for EVM
     to: "0x16378Cb38F5D153f63019C1Bd2297b585dE0f44C"
 });
+
+console.log(tx);
+/*
+{
+    message: string;
+    data: {
+        transactionHash: string;
+    }
+}
+*/
 ```
 
 **Encoding Function Data**
@@ -74,4 +101,17 @@ const tx = await playerApi.sendTransaction({
 const player = await playerApi.getPlayer({
     playerId: "xxx-xxx-xxx"
 });
+
+console.log(player);
+/*
+{
+    message: string;
+    data: {
+        player: {
+            id: string;
+            address: string;
+            status: string;
+        }
+    }
+}
 ```
