@@ -7,5 +7,5 @@ export default defineConfig({
             name: "PlayerAPI",
             fileName: "PlayerAPI",
         },
-    },
+    }
 });

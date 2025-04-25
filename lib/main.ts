@@ -1,7 +1,7 @@
 import { SupportedRegions } from "./regions";
+import { type SupportedChains, type CreatePlayerResponse, type ApiError, type SendTransactionResponse, type EstimateGasResponse, type GetPlayerResponse } from "./types";
 import { urls } from "./urls";
 
-type SupportedChains = "nebula" | "nebula-testnet";
 
 class PlayerApi {
     #apiKey: string;
@@ -18,11 +18,11 @@ class PlayerApi {
         this.#url = urls[region];
     }
 
-    public changeRegion(region: SupportedRegions) {
+    public changeRegion(region: SupportedRegions) : void {
         this.#url = urls[region];
     }
 
-    public setApiKey(apiKey: string) {
+    public setApiKey(apiKey: string) : void {
         this.#apiKey = apiKey;
     }
 
@@ -32,20 +32,27 @@ class PlayerApi {
     }: {
         chainName: SupportedChains;
         suppliedId: string;
-    }) {
-        const response = await fetch(`${this.#url}/v1/players`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "x-api-key": this.#apiKey,
-            },
-            body: JSON.stringify({
-                chainName,
-                suppliedId,
-            }),
-        });
-
-        return await response.json();
+    }) : Promise<CreatePlayerResponse | ApiError> {
+        try {
+            const response = await fetch(`${this.#url}/v1/players`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-api-key": this.#apiKey,
+                },
+                body: JSON.stringify({
+                    chainName,
+                    suppliedId,
+                }),
+            });
+    
+            return await response.json() satisfies CreatePlayerResponse;
+        } catch (err: any) {
+            console.log(err);
+            return {
+                error: err["message"] ?? err.toString()
+            } as ApiError;
+        }
     }
 
     public async sendTransaction({
@@ -60,22 +67,28 @@ class PlayerApi {
         data: `0x${string}`;
         value: number | string;
         to: `0x${string}`;
-    }) {
-        const response = await fetch(`${this.#url}/v1/transactions`, {
-            headers: {
-                "Content-Type": "application/json",
-                "x-api-key": this.#apiKey,
-            },
-            body: JSON.stringify({
-                chainName,
-                data,
-                playerId,
-                value,
-                to,
-            }),
-        });
-
-        return await response.json();
+    }) : Promise<SendTransactionResponse | ApiError> {
+        try {
+            const response = await fetch(`${this.#url}/v1/transactions`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-api-key": this.#apiKey,
+                },
+                body: JSON.stringify({
+                    chainName,
+                    data,
+                    playerId,
+                    value,
+                    to,
+                }),
+            });
+    
+            return await response.json() satisfies SendTransactionResponse;
+        } catch (err: any) {
+            return {
+                error: err["error"] ?? err["message"] ?? err.toString()
+            } as ApiError;
+        }
     }
 
     public async estimateGas({
@@ -90,32 +103,44 @@ class PlayerApi {
         data: `0x${string}`;
         value: number | string;
         to: `0x${string}`;
-    }) {
-        const response = await fetch(`${this.#url}/v1/transactions/estimate`, {
-            headers: {
-                "Content-Type": "application/json",
-                "x-api-key": this.#apiKey,
-            },
-            body: JSON.stringify({
-                chainName,
-                data,
-                playerId,
-                value,
-                to,
-            }),
-        });
-
-        return await response.json();
+    }) : Promise<EstimateGasResponse | ApiError> {
+        try {
+            const response = await fetch(`${this.#url}/v1/transactions/estimate`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-api-key": this.#apiKey,
+                },
+                body: JSON.stringify({
+                    chainName,
+                    data,
+                    playerId,
+                    value,
+                    to,
+                }),
+            });
+    
+            return await response.json() satisfies EstimateGasResponse;
+        } catch (err: any) {
+            return {
+                error: err["message"] ?? err.toString()
+            } as ApiError;
+        }
     }
 
-    public async getPlayer({ playerId }: { playerId: string }) {
-        const response = await fetch(`${this.#url}/v1/players/${playerId}`, {
-            headers: {
-                "Content-Type": "application/json",
-                "x-api-key": this.#apiKey,
-            },
-        });
-        return await response.json();
+    public async getPlayer({ playerId }: { playerId: string }) : Promise<GetPlayerResponse | ApiError> {
+        try {
+            const response = await fetch(`${this.#url}/v1/players/${playerId}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-api-key": this.#apiKey,
+                },
+            });
+            return await response.json() satisfies GetPlayerResponse;
+        } catch (err: any) {
+            return {
+                error: err["error"] ?? err["message"] ?? err.toString()
+            } as ApiError;
+        }
     }
 }
 
