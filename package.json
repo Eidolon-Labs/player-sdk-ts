@@ -1,6 +1,6 @@
 {
   "name": "@eidolon-labs/player-sdk",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "devDependencies": {
     "husky": "^9.1.7",
     "lint-staged": "^15.5.1",
