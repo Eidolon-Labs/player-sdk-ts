@@ -1,3 +1,4 @@
+import { chainIds } from "./chains";
 import { SupportedRegions } from "./regions";
 import { type SupportedChains, type CreatePlayerResponse, type ApiError, type SendTransactionResponse, type EstimateGasResponse, type GetPlayerResponse } from "./types";
 import { urls } from "./urls";
@@ -63,18 +64,19 @@ class PlayerApi {
     }: {
         chainName: SupportedChains;
         playerId: string;
-        data: `0x${string}`;
-        value: number | string;
+        data?: `0x${string}`;
+        value?: number | string;
         to: `0x${string}`;
     }) : Promise<SendTransactionResponse | ApiError> {
         try {
             const response = await fetch(`${this.#url}/v1/transactions`, {
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     "x-api-key": this.#apiKey,
                 },
                 body: JSON.stringify({
-                    chainName,
+                    chainId: chainIds[chainName],
                     data,
                     playerId,
                     value,
@@ -99,18 +101,19 @@ class PlayerApi {
     }: {
         chainName: SupportedChains;
         playerId: string;
-        data: `0x${string}`;
-        value: number | string;
+        data?: `0x${string}`;
+        value?: number | string;
         to: `0x${string}`;
     }) : Promise<EstimateGasResponse | ApiError> {
         try {
             const response = await fetch(`${this.#url}/v1/transactions/estimate`, {
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     "x-api-key": this.#apiKey,
                 },
                 body: JSON.stringify({
-                    chainName,
+                    chainId: chainIds[chainName],
                     data,
                     playerId,
                     value,

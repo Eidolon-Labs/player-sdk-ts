@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES2020",               // Output modern JS
-    "module": "ESNext",               // Use modern module syntax
+    "target": "ES2020",
+    "module": "ESNext",
     "lib": ["ES2020"],
-    "declaration": true,              // Emit .d.ts files
-    "outDir": "dist",                 // Output folder
-    "strict": true,                   // Enable all strict type checks
-    "moduleResolution": "node",      // Resolve modules like Node.js
-    "esModuleInterop": true          // Enable `import fs from 'fs'`-style imports
+    "declaration": true,
+    "outDir": "dist",
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true
   },
-  "include": ["lib"],                 // Which files to compile
-  "exclude": ["node_modules"]        // What to ignore
+  "include": ["lib"],  // Include your source directory
+  "exclude": ["node_modules"]
 }

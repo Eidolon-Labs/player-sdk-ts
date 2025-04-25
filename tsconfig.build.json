@@ -1,12 +1,16 @@
 {
-    "extends": "./tsconfig.json",
-    "compilerOptions": {
-      "noEmit": false, // Required to emit .d.ts
-      "emitDeclarationOnly": true,
-      "declaration": true,
-      "declarationDir": "dist/types",
-      "outDir": "dist",
-      "stripInternal": true
-    },
-    "include": ["lib"]
-  }
+  "compilerOptions": {
+    "declaration": true,               // Emit .d.ts files
+    "declarationDir": "dist/types",     // Output declaration files here
+    "module": "ESNext",                 // Use ESNext module system for compatibility
+    "target": "ES2020",                 // Target modern JavaScript
+    "outDir": "dist",                   // Output JS files here
+    "strict": true,                     // Enable all strict type checks
+    "moduleResolution": "node",         // Resolve modules like Node.js
+    "esModuleInterop": true,            // Enable `import fs from 'fs'`-style imports
+    "skipLibCheck": true                // Skip type checking of declaration files
+  },
+  "include": [
+    "lib"  // Include your TypeScript source files
+  ]
+}
