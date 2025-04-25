@@ -1,15 +1,21 @@
 # @eidolon-labs/player-sdk
 
-To install dependencies:
+## Installation
 
-```bash
-bun install
+```shell
+# NPM
+npm add @eidolon-labs/player-sdk
+
+# Yarn
+yarn add @eidolon-labs/player-sdk
+
+# PNPM
+pnpm add @eidolon-labs/player-sdk
+
+# Bun
+bun add @eidolon-labs/player-sdk
 ```
 
-To run:
+## Using the SDK
 
-```bash
-bun run ./dist/PlayerAPI.js
-```
-
-This project was created using `bun init` in bun v1.2.10. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+1. Start by heading to https://discord.eidolon.gg to request an API Key
