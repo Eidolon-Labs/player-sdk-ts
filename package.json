@@ -38,7 +38,7 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "type": "module",
-  "description": "@eidolon/player-sdk is a lightweight API wrapper for the Eidolon Player API; the invisible gaming layer for blockchain.",
+  "description": "@eidolon-labs/player-sdk is a lightweight API wrapper for the Eidolon Player API; the invisible gaming layer for blockchain.",
   "keywords": [
     "blockchain",
     "gaming",
