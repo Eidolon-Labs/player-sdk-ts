@@ -1,7 +1,7 @@
 # @eidolon-labs/player-sdk
 
 ## About the SDK
-- This is for [Eidolon's][https://eidolon.gg] Player API
+- This is for [Eidolon's](https://eidolon.gg) Player API
 - The Player API is an invisible access layer for blockchain gaming
 - It is not designed or built for monetary purposes
 - It is designed to be used from a server
@@ -114,6 +114,7 @@ console.log(player);
         }
     }
 }
+*/
 ```
 
 ### Notice
