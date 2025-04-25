@@ -19,6 +19,7 @@
       "require": "./dist/player-api.cjs"
     }
   },
+  "license": "MIT",
   "files": [
     "dist"
   ],
