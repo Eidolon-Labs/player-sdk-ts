@@ -144,6 +144,22 @@ class PlayerApi {
             } as ApiError;
         }
     }
+
+    public async getPlayerBySuppliedId({ suppliedId }: { suppliedId: string }) : Promise<GetPlayerResponse | ApiError> {
+        try {
+            const response = await fetch(`${this.#url}/v1/players/recover/${suppliedId}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-api-key": this.#apiKey,
+                },
+            });
+            return await response.json() as GetPlayerResponse;
+        } catch (err: any) {
+            return {
+                error: err["error"] ?? err["message"] ?? err.toString()
+            } as ApiError;
+        }
+    }
 }
 
 export { PlayerApi };
