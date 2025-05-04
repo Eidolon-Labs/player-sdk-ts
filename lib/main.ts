@@ -32,27 +32,20 @@ class PlayerApi {
     }: {
         chainName: SupportedChains;
         suppliedId: string;
-    }) : Promise<CreatePlayerResponse | ApiError> {
-        try {
-            const response = await fetch(`${this.#url}/v1/players`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-api-key": this.#apiKey,
-                },
-                body: JSON.stringify({
-                    chainName,
-                    suppliedId,
-                }),
-            });
-    
-            return await response.json() as CreatePlayerResponse;
-        } catch (err: any) {
-            console.log(err);
-            return {
-                error: err["message"] ?? err.toString()
-            } as ApiError;
-        }
+    }) : Promise<CreatePlayerResponse> {
+        const response = await fetch(`${this.#url}/v1/players`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "x-api-key": this.#apiKey,
+            },
+            body: JSON.stringify({
+                chainName,
+                suppliedId,
+            }),
+        });
+
+        return await response.json() as CreatePlayerResponse;
     }
 
     public async sendTransaction({
@@ -67,29 +60,23 @@ class PlayerApi {
         data?: `0x${string}`;
         value?: number | string;
         to: `0x${string}`;
-    }) : Promise<SendTransactionResponse | ApiError> {
-        try {
-            const response = await fetch(`${this.#url}/v1/transactions`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-api-key": this.#apiKey,
-                },
-                body: JSON.stringify({
-                    chainId: chainIds[chainName],
-                    data,
-                    playerId,
-                    value,
-                    to,
-                }),
-            });
-    
-            return await response.json() as SendTransactionResponse;
-        } catch (err: any) {
-            return {
-                error: err["error"] ?? err["message"] ?? err.toString()
-            } as ApiError;
-        }
+    }) : Promise<SendTransactionResponse> {
+        const response = await fetch(`${this.#url}/v1/transactions`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "x-api-key": this.#apiKey,
+            },
+            body: JSON.stringify({
+                chainId: chainIds[chainName],
+                data,
+                playerId,
+                value,
+                to,
+            }),
+        });
+
+        return await response.json() as SendTransactionResponse;
     }
 
     public async estimateGas({
@@ -104,61 +91,43 @@ class PlayerApi {
         data?: `0x${string}`;
         value?: number | string;
         to: `0x${string}`;
-    }) : Promise<EstimateGasResponse | ApiError> {
-        try {
-            const response = await fetch(`${this.#url}/v1/transactions/estimate`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-api-key": this.#apiKey,
-                },
-                body: JSON.stringify({
-                    chainId: chainIds[chainName],
-                    data,
-                    playerId,
-                    value,
-                    to,
-                }),
-            });
-    
-            return await response.json() as EstimateGasResponse;
-        } catch (err: any) {
-            return {
-                error: err["message"] ?? err.toString()
-            } as ApiError;
-        }
+    }) : Promise<EstimateGasResponse> {
+        const response = await fetch(`${this.#url}/v1/transactions/estimate`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "x-api-key": this.#apiKey,
+            },
+            body: JSON.stringify({
+                chainId: chainIds[chainName],
+                data,
+                playerId,
+                value,
+                to,
+            }),
+        });
+
+        return await response.json() as EstimateGasResponse;
     }
 
-    public async getPlayer({ playerId }: { playerId: string }) : Promise<GetPlayerResponse | ApiError> {
-        try {
-            const response = await fetch(`${this.#url}/v1/players/${playerId}`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-api-key": this.#apiKey,
-                },
-            });
-            return await response.json() as GetPlayerResponse;
-        } catch (err: any) {
-            return {
-                error: err["error"] ?? err["message"] ?? err.toString()
-            } as ApiError;
-        }
+    public async getPlayer({ playerId }: { playerId: string }) : Promise<GetPlayerResponse> {
+        const response = await fetch(`${this.#url}/v1/players/${playerId}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "x-api-key": this.#apiKey,
+            },
+        });
+        return await response.json() as GetPlayerResponse;
     }
 
-    public async getPlayerBySuppliedId({ suppliedId }: { suppliedId: string }) : Promise<GetPlayerResponse | ApiError> {
-        try {
-            const response = await fetch(`${this.#url}/v1/players/recover/${suppliedId}`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-api-key": this.#apiKey,
-                },
-            });
-            return await response.json() as GetPlayerResponse;
-        } catch (err: any) {
-            return {
-                error: err["error"] ?? err["message"] ?? err.toString()
-            } as ApiError;
-        }
+    public async getPlayerBySuppliedId({ suppliedId }: { suppliedId: string }) : Promise<GetPlayerResponse> {
+        const response = await fetch(`${this.#url}/v1/players/recover/${suppliedId}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "x-api-key": this.#apiKey,
+            },
+        });
+        return await response.json() as GetPlayerResponse;
     }
 }
 
